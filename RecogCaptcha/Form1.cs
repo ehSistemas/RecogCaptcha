@@ -20,6 +20,13 @@ namespace RecogCaptcha
             InitializeComponent();
         }
 
+        public HelperRecogCaptcha HelperRecogCaptcha
+        {
+            get { if (_helperRecogCaptcha == null) _helperRecogCaptcha = new HelperRecogCaptcha(); return _helperRecogCaptcha; }
+            set { _helperRecogCaptcha = value; }
+        }
+        private HelperRecogCaptcha _helperRecogCaptcha;
+
         private void openImageButton_Click(object sender, EventArgs e)
         {
             openFileDialog.ShowDialog();
@@ -56,7 +63,7 @@ namespace RecogCaptcha
             bc.MinHeight = 10;
             FiltersSequence seq = new FiltersSequence(gs, inverter, open, inverter, bc, inverter, open, cc, cor, bc, inverter);
             pictureBox.Image = seq.Apply(imagem);
-            string reconhecido = OCR((Bitmap)pictureBox.Image);
+            string reconhecido = HelperRecogCaptcha.OCR((Bitmap)pictureBox.Image);
             return reconhecido;
         }
 
@@ -68,7 +75,7 @@ namespace RecogCaptcha
             pbImagemOriginal.Image = imagem;
 
             // Aplicação de Filtros
-            imagem = AplicarFiltros(imagem);
+            imagem = HelperRecogCaptcha.AplicarFiltros(imagem);
 
             // Separação de letras 
             SepararLetras(imagem);
@@ -81,7 +88,7 @@ namespace RecogCaptcha
 
             pictureBox.Image = imagem;
 
-            string reconhecido = OCR((Bitmap)pictureBox.Image);
+            string reconhecido = HelperRecogCaptcha.OCR((Bitmap)pictureBox.Image);
             return reconhecido;
         }
 
@@ -167,94 +174,25 @@ namespace RecogCaptcha
 
         private void SepararLetras(Bitmap imagem)
         {
-            BlobCounter blobCounter = new BlobCounter();
-            blobCounter.ProcessImage(imagem);
-            var blobs = blobCounter.GetObjectsInformation();
+            var blobs = HelperRecogCaptcha.GetBlobs(imagem);
 
-            blobs = ReorganizarBlobs(blobs);
-
-            pbCaracter1.Image = GetBlob(imagem, blobs, 0);
-            pbCaracter2.Image = GetBlob(imagem, blobs, 1);
-            pbCaracter3.Image = GetBlob(imagem, blobs, 2);
-            pbCaracter4.Image = GetBlob(imagem, blobs, 3);
-            pbCaracter5.Image = GetBlob(imagem, blobs, 4);
-            pbCaracter6.Image = GetBlob(imagem, blobs, 5);
-        }
-
-        private Blob[] ReorganizarBlobs(Blob[] blobs)
-        {
-            var blobsOrganized = blobs
-                .Where(o => o.Area > 20)
-                .OrderBy(o => o.Rectangle.X).ToList();
-
-            return blobsOrganized.ToArray();
+            pbCaracter1.Image = HelperRecogCaptcha.GetBlob(imagem, blobs, 0);
+            pbCaracter2.Image = HelperRecogCaptcha.GetBlob(imagem, blobs, 1);
+            pbCaracter3.Image = HelperRecogCaptcha.GetBlob(imagem, blobs, 2);
+            pbCaracter4.Image = HelperRecogCaptcha.GetBlob(imagem, blobs, 3);
+            pbCaracter5.Image = HelperRecogCaptcha.GetBlob(imagem, blobs, 4);
+            pbCaracter6.Image = HelperRecogCaptcha.GetBlob(imagem, blobs, 5);
         }
 
         private void OCRLetras()
         {
-            tbCaracter1.Text = OCR((Bitmap)pbCaracter1.Image);
-            tbCaracter2.Text = OCR((Bitmap)pbCaracter2.Image);
-            tbCaracter3.Text = OCR((Bitmap)pbCaracter3.Image);
-            tbCaracter4.Text = OCR((Bitmap)pbCaracter4.Image);
-            tbCaracter5.Text = OCR((Bitmap)pbCaracter5.Image);
-            tbCaracter6.Text = OCR((Bitmap)pbCaracter6.Image);
+            tbCaracter1.Text = HelperRecogCaptcha.OCR((Bitmap)pbCaracter1.Image);
+            tbCaracter2.Text = HelperRecogCaptcha.OCR((Bitmap)pbCaracter2.Image);
+            tbCaracter3.Text = HelperRecogCaptcha.OCR((Bitmap)pbCaracter3.Image);
+            tbCaracter4.Text = HelperRecogCaptcha.OCR((Bitmap)pbCaracter4.Image);
+            tbCaracter5.Text = HelperRecogCaptcha.OCR((Bitmap)pbCaracter5.Image);
+            tbCaracter6.Text = HelperRecogCaptcha.OCR((Bitmap)pbCaracter6.Image);
 
-        }
-
-        private System.Drawing.Image GetBlob(Bitmap img, Blob[] blobs, int index)
-        {
-            if (blobs != null && blobs.Length > index)
-            {
-                Bitmap bmpImage = new Bitmap(img);
-                int margem = 0;
-                var ret = new Rectangle(blobs[index].Rectangle.X, blobs[index].Rectangle.Y, blobs[index].Rectangle.Width, blobs[index].Rectangle.Height);
-                return bmpImage.Clone(ret, bmpImage.PixelFormat);
-            }
-            else
-                return null;
-        }
-
-        private Bitmap AplicarFiltros(Bitmap imagem)
-        {
-            // Sobel edge detector
-            imagem = AplicarFiltro(imagem, new SobelEdgeDetector(), true);
-            // Threshold binarization
-            imagem = AplicarFiltro(imagem, new Threshold(), true);
-            return imagem;
-        }
-
-        private string OCR(Bitmap b)
-        {
-            string res = "";
-            if (b == null)
-                return res;
-
-            using (var engine = new TesseractEngine(@"tessdata", "eng", EngineMode.Default))
-            {
-                engine.SetVariable("tessedit_char_whitelist", "1234567890abcdefghijklmnopqrstuvwxyz");
-                engine.SetVariable("tessedit_unrej_any_wd", true);
-
-                using (var page = engine.Process(b, PageSegMode.SingleLine))
-                    res = page.GetText();
-            }
-            return res;
-        }
-
-        private Bitmap AplicarFiltro(Bitmap img, IFilter filter, bool grayscale = false)
-        {
-            if (img.PixelFormat != PixelFormat.Format24bppRgb)
-            {
-                Bitmap temp = AForge.Imaging.Image.Clone(img, PixelFormat.Format24bppRgb);
-                img.Dispose();
-                img = temp;
-            }
-
-            if (grayscale)
-                img = Grayscale.CommonAlgorithms.RMY.Apply(img);
-
-            var imagemComFiltro = filter.Apply(img);
-
-            return imagemComFiltro;
         }
 
         private void button1_Click(object sender, EventArgs e)

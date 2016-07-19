@@ -43,3 +43,24 @@ D:\OpenSources\RecogCaptcha\RecogCaptcha\obj\Debug\RecogCaptcha.csprojResolveAss
 D:\OpenSources\RecogCaptcha\RecogCaptcha\obj\Debug\RecogCaptcha.Form1.resources
 D:\OpenSources\RecogCaptcha\RecogCaptcha\obj\Debug\RecogCaptcha.Properties.Resources.resources
 D:\OpenSources\RecogCaptcha\RecogCaptcha\obj\Debug\RecogCaptcha.csproj.GenerateResource.Cache
+C:\Users\emerson.silva\Documents\Visual Studio 2015\Projects\RecogCaptcha\RecogCaptcha\bin\Debug\RecogCaptcha.exe.config
+C:\Users\emerson.silva\Documents\Visual Studio 2015\Projects\RecogCaptcha\RecogCaptcha\obj\Debug\RecogCaptcha.exe
+C:\Users\emerson.silva\Documents\Visual Studio 2015\Projects\RecogCaptcha\RecogCaptcha\obj\Debug\RecogCaptcha.pdb
+C:\Users\emerson.silva\Documents\Visual Studio 2015\Projects\RecogCaptcha\RecogCaptcha\bin\Debug\liblept168.dll
+C:\Users\emerson.silva\Documents\Visual Studio 2015\Projects\RecogCaptcha\RecogCaptcha\bin\Debug\libtesseract302.dll
+C:\Users\emerson.silva\Documents\Visual Studio 2015\Projects\RecogCaptcha\RecogCaptcha\bin\Debug\tessdata\eng.cube.bigrams
+C:\Users\emerson.silva\Documents\Visual Studio 2015\Projects\RecogCaptcha\RecogCaptcha\bin\Debug\tessdata\eng.cube.fold
+C:\Users\emerson.silva\Documents\Visual Studio 2015\Projects\RecogCaptcha\RecogCaptcha\bin\Debug\tessdata\eng.cube.lm
+C:\Users\emerson.silva\Documents\Visual Studio 2015\Projects\RecogCaptcha\RecogCaptcha\bin\Debug\tessdata\eng.cube.nn
+C:\Users\emerson.silva\Documents\Visual Studio 2015\Projects\RecogCaptcha\RecogCaptcha\bin\Debug\tessdata\eng.cube.params
+C:\Users\emerson.silva\Documents\Visual Studio 2015\Projects\RecogCaptcha\RecogCaptcha\bin\Debug\tessdata\eng.cube.size
+C:\Users\emerson.silva\Documents\Visual Studio 2015\Projects\RecogCaptcha\RecogCaptcha\bin\Debug\tessdata\eng.cube.word-freq
+C:\Users\emerson.silva\Documents\Visual Studio 2015\Projects\RecogCaptcha\RecogCaptcha\bin\Debug\tessdata\eng.tesseract_cube.nn
+C:\Users\emerson.silva\Documents\Visual Studio 2015\Projects\RecogCaptcha\RecogCaptcha\bin\Debug\tessdata\eng.traineddata
+C:\Users\emerson.silva\Documents\Visual Studio 2015\Projects\RecogCaptcha\RecogCaptcha\bin\Debug\RecogCaptcha.exe
+C:\Users\emerson.silva\Documents\Visual Studio 2015\Projects\RecogCaptcha\RecogCaptcha\bin\Debug\RecogCaptcha.pdb
+C:\Users\emerson.silva\Documents\Visual Studio 2015\Projects\RecogCaptcha\RecogCaptcha\bin\Debug\AForge.Math.dll
+C:\Users\emerson.silva\Documents\Visual Studio 2015\Projects\RecogCaptcha\RecogCaptcha\obj\Debug\RecogCaptcha.csprojResolveAssemblyReference.cache
+C:\Users\emerson.silva\Documents\Visual Studio 2015\Projects\RecogCaptcha\RecogCaptcha\obj\Debug\RecogCaptcha.Form1.resources
+C:\Users\emerson.silva\Documents\Visual Studio 2015\Projects\RecogCaptcha\RecogCaptcha\obj\Debug\RecogCaptcha.Properties.Resources.resources
+C:\Users\emerson.silva\Documents\Visual Studio 2015\Projects\RecogCaptcha\RecogCaptcha\obj\Debug\RecogCaptcha.csproj.GenerateResource.Cache
