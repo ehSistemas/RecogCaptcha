@@ -35,12 +35,17 @@
             this.btLetter = new System.Windows.Forms.Button();
             this.btFindMatch = new System.Windows.Forms.Button();
             this.lbPercent = new System.Windows.Forms.Label();
-            this.lbResults = new System.Windows.Forms.ListBox();
             this.ofdCaptcha = new System.Windows.Forms.OpenFileDialog();
             this.ofdLetter = new System.Windows.Forms.OpenFileDialog();
+            this.btAplicarFiltros = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btSalve = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbCaptcha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLetter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMatch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // pbCaptcha
@@ -109,14 +114,6 @@
             this.lbPercent.TabIndex = 6;
             this.lbPercent.Text = "label1";
             // 
-            // lbResults
-            // 
-            this.lbResults.FormattingEnabled = true;
-            this.lbResults.Location = new System.Drawing.Point(12, 202);
-            this.lbResults.Name = "lbResults";
-            this.lbResults.Size = new System.Drawing.Size(610, 147);
-            this.lbResults.TabIndex = 7;
-            // 
             // ofdCaptcha
             // 
             this.ofdCaptcha.FileName = "openFileDialog1";
@@ -125,12 +122,62 @@
             // 
             this.ofdLetter.FileName = "openFileDialog1";
             // 
+            // btAplicarFiltros
+            // 
+            this.btAplicarFiltros.Location = new System.Drawing.Point(177, 135);
+            this.btAplicarFiltros.Name = "btAplicarFiltros";
+            this.btAplicarFiltros.Size = new System.Drawing.Size(75, 23);
+            this.btAplicarFiltros.TabIndex = 8;
+            this.btAplicarFiltros.Text = "Aplicar Filtros";
+            this.btAplicarFiltros.UseVisualStyleBackColor = true;
+            this.btAplicarFiltros.Click += new System.EventHandler(this.btAplicarFiltros_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2});
+            this.dataGridView1.Location = new System.Drawing.Point(12, 181);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(610, 175);
+            this.dataGridView1.TabIndex = 9;
+            // 
+            // Column1
+            // 
+            this.Column1.Frozen = true;
+            this.Column1.HeaderText = "Percentual de Diferença";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column2.Frozen = true;
+            this.Column2.HeaderText = "Imagem";
+            this.Column2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 50;
+            // 
+            // btSalve
+            // 
+            this.btSalve.Location = new System.Drawing.Point(258, 55);
+            this.btSalve.Name = "btSalve";
+            this.btSalve.Size = new System.Drawing.Size(75, 23);
+            this.btSalve.TabIndex = 10;
+            this.btSalve.Text = "Salvar";
+            this.btSalve.UseVisualStyleBackColor = true;
+            this.btSalve.Click += new System.EventHandler(this.btSalve_Click);
+            // 
             // FindLetterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 352);
-            this.Controls.Add(this.lbResults);
+            this.ClientSize = new System.Drawing.Size(634, 365);
+            this.Controls.Add(this.btSalve);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btAplicarFiltros);
             this.Controls.Add(this.lbPercent);
             this.Controls.Add(this.btFindMatch);
             this.Controls.Add(this.btLetter);
@@ -143,6 +190,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbCaptcha)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLetter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMatch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -157,8 +205,12 @@
         private System.Windows.Forms.Button btLetter;
         private System.Windows.Forms.Button btFindMatch;
         private System.Windows.Forms.Label lbPercent;
-        private System.Windows.Forms.ListBox lbResults;
         private System.Windows.Forms.OpenFileDialog ofdCaptcha;
         private System.Windows.Forms.OpenFileDialog ofdLetter;
+        private System.Windows.Forms.Button btAplicarFiltros;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewImageColumn Column2;
+        private System.Windows.Forms.Button btSalve;
     }
 }

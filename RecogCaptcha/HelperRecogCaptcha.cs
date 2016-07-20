@@ -14,6 +14,11 @@ namespace RecogCaptcha
 {
     public class HelperRecogCaptcha
     {
+        public Bitmap AplicarFiltros(System.Drawing.Image imagem)
+        {
+            return AplicarFiltros(new Bitmap(imagem));
+        }
+
         public Bitmap AplicarFiltros(Bitmap imagem)
         {
             // Sobel edge detector
